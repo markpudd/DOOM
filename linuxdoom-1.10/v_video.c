@@ -483,11 +483,17 @@ void V_Init (void)
 { 
     int		i;
     byte*	base;
-		
-    // stick these in low dos memory on PCs
 
+    // stick these in low dos memory on PCs
+    printf("Alloc screen\n");
     base = I_AllocLow (SCREENWIDTH*SCREENHEIGHT*4);
+
+
+    
+    printf("BASE screen\n");
 
     for (i=0 ; i<4 ; i++)
 	screens[i] = base + i*SCREENWIDTH*SCREENHEIGHT;
+
+
 }

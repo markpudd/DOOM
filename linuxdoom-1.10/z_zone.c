@@ -96,6 +96,13 @@ void Z_Init (void)
     int		size;
 
     mainzone = (memzone_t *)I_ZoneBase (&size);
+    if(mainzone ==0) {
+        printf("Unable to get heap\n");
+    } else {
+      printf("Allocated %d heap\n",size);
+  
+
+    }
     mainzone->size = size;
 
     // set the entire zone to one free block

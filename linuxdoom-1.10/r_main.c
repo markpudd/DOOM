@@ -618,26 +618,27 @@ void R_InitLightTables (void)
     int		level;
     int		startmap; 	
     int		scale;
-    
+    printf("Light l\n");
     // Calculate the light levels to use
     //  for each level / distance combination.
     for (i=0 ; i< LIGHTLEVELS ; i++)
     {
-	startmap = ((LIGHTLEVELS-1-i)*2)*NUMCOLORMAPS/LIGHTLEVELS;
-	for (j=0 ; j<MAXLIGHTZ ; j++)
-	{
-	    scale = FixedDiv ((SCREENWIDTH/2*FRACUNIT), (j+1)<<LIGHTZSHIFT);
-	    scale >>= LIGHTSCALESHIFT;
-	    level = startmap - scale/DISTMAP;
-	    
-	    if (level < 0)
-		level = 0;
+        
+        startmap = ((LIGHTLEVELS-1-i)*2)*NUMCOLORMAPS/LIGHTLEVELS;
+        for (j=0 ; j<MAXLIGHTZ ; j++)
+        {
+            scale = FixedDiv ((SCREENWIDTH/2*FRACUNIT), (j+1)<<LIGHTZSHIFT);
+            scale >>= LIGHTSCALESHIFT;
+            level = startmap - scale/DISTMAP;
+            
+            if (level < 0)
+            level = 0;
 
-	    if (level >= NUMCOLORMAPS)
-		level = NUMCOLORMAPS-1;
+            if (level >= NUMCOLORMAPS)
+            level = NUMCOLORMAPS-1;
 
-	    zlight[i][j] = colormaps + level*256;
-	}
+            zlight[i][j] = colormaps + level*256;
+        }
     }
 }
 
@@ -779,7 +780,7 @@ void R_Init (void)
     R_InitTables ();
     // viewwidth / viewheight / detailLevel are set by the defaults
     printf ("\nR_InitTables");
-
+    printf("\nScb=%d , dl=%d",screenblocks, detailLevel);
     R_SetViewSize (screenblocks, detailLevel);
     R_InitPlanes ();
     printf ("\nR_InitPlanes");

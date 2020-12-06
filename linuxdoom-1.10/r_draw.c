@@ -102,6 +102,7 @@ int			dccount;
 // Thus a special case loop for very fast rendering can
 //  be used. It has also been used with Wolfenstein 3D.
 // 
+#if 1
 void R_DrawColumn (void) 
 { 
     int			count; 
@@ -146,7 +147,7 @@ void R_DrawColumn (void)
 	
     } while (count--); 
 } 
-
+#endif
 
 
 // UNUSED.

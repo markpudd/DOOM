@@ -4,14 +4,14 @@
 #
 # $Log:$
 #
-CC=  gcc  # gcc or g++
+CC=  /opt/riscv/bin/riscv64-unknown-elf-gcc  # gcc or g++
 
-CFLAGS=-g -Wall -DNORMALUNIX -DLINUX # -DUSEASM 
-LDFLAGS=-L/usr/X11R6/lib
-LIBS=-lXext -lX11 -lnsl -lm
+CFLAGS= -march=rv32i -mabi=ilp32  --specs=nano.specs -Wl,-N -DNORMALUNIX  -DNEWLIB # -DUSEASM 
+LDFLAGS=    #-L/usr/X11R6/lib
+LIBS=-lm  #-lXext -lX11 -lnsl -lm
 
 # subdirectory for objects
-O=linux
+O=.
 
 # not too sophisticated dependency
 OBJS=				\

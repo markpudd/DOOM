@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id:$
@@ -50,7 +50,7 @@ void I_WaitVBL(int count);
 
 void I_ReadScreen (byte* scr);
 
-void I_BeginRead (void);
+//void I_BeginRead (void);
 void I_EndRead (void);
 
 

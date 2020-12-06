@@ -392,7 +392,7 @@ char ForeignTranslation(unsigned char ch)
 void HU_Init(void)
 {
 
-    int		i;
+    int		i; 
     int		j;
     char	buffer[9];
 
@@ -403,12 +403,18 @@ void HU_Init(void)
 
     // load the heads-up font
     j = HU_FONTSTART;
+
+  //  printf("\n floop %d",HU_FONTSIZE);
     for (i=0;i<HU_FONTSIZE;i++)
     {
+
+   //         printf("STCFN%.3d\n", j);
+
 	sprintf(buffer, "STCFN%.3d", j++);
+
 	hu_font[i] = (patch_t *) W_CacheLumpName(buffer, PU_STATIC);
     }
-
+  //  printf("\n floop done");
 }
 
 void HU_Stop(void)

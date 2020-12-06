@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id:$
@@ -75,6 +75,7 @@ int  I_GetHeapSize (void)
 
 byte* I_ZoneBase (int*	size)
 {
+    printf("Allocating %d\n",mb_used);
     *size = mb_used*1024*1024;
     return (byte *) malloc (*size);
 }
@@ -91,7 +92,7 @@ int  I_GetTime (void)
     struct timezone	tzp;
     int			newtics;
     static int		basetime=0;
-  
+
     gettimeofday(&tp, &tzp);
     if (!basetime)
 	basetime = tp.tv_sec;
@@ -123,17 +124,19 @@ void I_Quit (void)
     exit(0);
 }
 
+// TODO
 void I_WaitVBL(int count)
 {
+  /*
 #ifdef SGI
-    sginap(1);                                           
+    sginap(1);
 #else
 #ifdef SUN
     sleep(0);
 #else
-    usleep (count * (1000000/70) );                                
+    usleep (count * (1000000/70) );
 #endif
-#endif
+#endif*/
 }
 
 void I_BeginRead(void)
@@ -144,15 +147,24 @@ void I_EndRead(void)
 {
 }
 
+
+
 byte*	I_AllocLow(int length)
 {
     byte*	mem;
-        
+    printf("MALLOC %d\n",length);
     mem = (byte *)malloc (length);
-    memset (mem,0,length);
+    printf("MEMSET %x\n",mem);
+    // video memory must be on a 32 bit boundry
+    // TODO, fix so ut can be freed....
+
+ //   memset (mem,0,length);
+       printf("MEMSET ZEROS\n");
+ 
     return mem;
 }
 
+//void I_StartFrame (void) {}
 
 //
 // I_Error
@@ -178,6 +190,8 @@ void I_Error (char *error, ...)
 
     D_QuitNetGame ();
     I_ShutdownGraphics();
-    
+
     exit(-1);
 }
+
+

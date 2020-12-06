@@ -1847,6 +1847,7 @@ void M_Ticker (void)
 void M_Init (void)
 {
     currentMenu = &MainDef;
+    printf("CM=%x",currentMenu);
     menuactive = 0;
     itemOn = currentMenu->lastOn;
     whichSkull = 0;
@@ -1856,7 +1857,8 @@ void M_Init (void)
     messageString = NULL;
     messageLastMenuActive = menuactive;
     quickSaveSlot = -1;
-
+  printf("CMccc");
+ 
     // Here we could catch other version dependencies,
     //  like HELP1/2, and four episodes.
 

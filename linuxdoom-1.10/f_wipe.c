@@ -273,21 +273,24 @@ wipe_ScreenWipe
 	wipe_initColorXForm, wipe_doColorXForm, wipe_exitColorXForm,
 	wipe_initMelt, wipe_doMelt, wipe_exitMelt
     };
-
+			printf("11\n");
     void V_MarkRect(int, int, int, int);
-
+			printf("12\n");
     // initial stuff
     if (!go)
     {
 	go = 1;
 	// wipe_scr = (byte *) Z_Malloc(width*height, PU_STATIC, 0); // DEBUG
 	wipe_scr = screens[0];
+    		printf("13\n");
 	(*wipes[wipeno*3])(width, height, ticks);
     }
-
+		printf("14\n");
     // do a piece of wipe-in
     V_MarkRect(0, 0, width, height);
+    		printf("15  %d\n",ticks);
     rc = (*wipes[wipeno*3+1])(width, height, ticks);
+    		printf("16\n");
     //  V_DrawBlock(x, y, 0, width, height, wipe_scr); // DEBUG
 
     // final stuff
@@ -295,6 +298,7 @@ wipe_ScreenWipe
     {
 	go = 0;
 	(*wipes[wipeno*3+2])(width, height, ticks);
+    		printf("17\n");
     }
 
     return !go;
